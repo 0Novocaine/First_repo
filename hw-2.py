@@ -1,7 +1,8 @@
 import random
+from typing import Any
 
 
-def get_numbers_ticket(quantity, min_int=1, max_int=1000):
+def get_numbers_ticket(min_int: int, max_int: int, quantity:int ) -> tuple[list[Any], str]:
     if not all(isinstance(x, int) for x in [min, max, quantity]):
         return [], ("Значение должно быть числом (int)")
     if 1 > min_int or max_int > 1000:
