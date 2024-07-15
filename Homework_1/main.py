@@ -1,8 +1,11 @@
-def caching_fibonacci():
+from typing import Callable
+
+
+def caching_fibonacci() -> Callable[[int], int]:
     # Создаем пустой словарь для хранения значений чисел Фибоначи.
     cache = {}
 
-    def fibonacci(number):
+    def fibonacci(number) -> int:
         if number <= 0:
             return 0
         elif number == 1:
