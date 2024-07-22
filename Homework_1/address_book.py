@@ -3,7 +3,9 @@ from record import Record
 
 
 class AddressBook(UserDict):
-
+    """
+    Класс для хранения и управления записями
+    """
     def add_record(self, record: Record):
         self.data[record.name.value] = record
 

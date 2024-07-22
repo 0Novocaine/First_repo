@@ -2,6 +2,9 @@ from enum import Enum
 
 
 class Command(Enum):
+    """
+    Перечисление доступных команд для управления адресной книгой.
+    """
     ADD = "add"
     CHANGE = "change"
     NAME = "name"

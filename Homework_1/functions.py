@@ -3,10 +3,16 @@ from command import *
 
 
 def to_lowercase(strings: List[str]) -> List[str]:
+    """
+        Преобразует все строки в списке в нижний регистр.
+    """
     return [s.lower() for s in strings]
 
 
 def parse_input(user_input: str) -> tuple[str, List[str]]:
+    """
+    Парсит вводные данные на команду и аргументы.
+    """
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
     args = [arg.lower() for arg in args]
@@ -15,6 +21,9 @@ def parse_input(user_input: str) -> tuple[str, List[str]]:
 
 
 def get_command_help():
+    """
+    Возвращает строку с описанием всех доступных команд.
+    """
     command_descriptions = {
         Command.ADD: "добавить пользователя",
         Command.CHANGE: "изменить телефон пользователя",

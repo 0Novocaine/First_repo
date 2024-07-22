@@ -5,10 +5,16 @@ from phone import Phone
 
 @dataclass
 class Record:
+    """
+    Класс для хранения информации про контакт, включая имя и список телефонов
+    """
     name: Name
     phones: list = field(default_factory=list)
 
     def add_phone(self, phone: str):
+        """
+        Добавляет новый номер телефона, если он валидный и отсутсвует в списке
+        """
         if Phone.validate_phone(phone):
             if not self.find_phone(phone):
                 self.phones.append(Phone(phone))
@@ -18,17 +24,26 @@ class Record:
             print(f"Неверный формат номера: {phone}. Номер телефон должен содержать 10 цифр.")
 
     def find_phone(self, phone: str):
+        """
+        Ищет номер телефона в списке телефонов записи.
+        """
         for match_phone in self.phones:
             if match_phone.value == phone:
                 return match_phone
         return None
 
     def delete_phone(self, phone: str):
+        """
+        Удаляет номер телефона из записи.
+        """
         phone_to_delete = self.find_phone(phone)
         if phone_to_delete:
             self.phones.remove(phone_to_delete)
 
     def edit_phone(self, old_phone: str, new_phone: str):
+        """
+        Редактирование номера телефона.
+        """
         phone_to_edit = self.find_phone(old_phone)
         if phone_to_edit:
             self.phones.remove(phone_to_edit)

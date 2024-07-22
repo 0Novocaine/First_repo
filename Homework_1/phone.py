@@ -4,6 +4,9 @@ from field import Field
 
 class Phone(Field):
     def __init__(self, value: str):
+        """
+        Класс для хранения номеров телефонов и их валидации
+        """
         if not self.validate_phone(value):
             raise ValueError("Phone number must contain exactly 10 digits.")
         super().__init__(value)
