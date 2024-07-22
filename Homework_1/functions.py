@@ -4,7 +4,7 @@ from command import *
 
 def to_lowercase(strings: List[str]) -> List[str]:
     """
-        Преобразует все строки в списке в нижний регистр.
+    Преобразует все строки в списке в нижний регистр.
     """
     return [s.lower() for s in strings]
 
