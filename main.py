@@ -1,12 +1,26 @@
 from handlers import *
 from functions import *
+import pickle
+
+
+def save_data(book, filename="addressbook.pkl"):
+    with open(filename, "wb") as f:
+        pickle.dump(book, f)
+
+
+def load_data(filename="addressbook.pkl"):
+    try:
+        with open(filename, "rb") as f:
+            return pickle.load(f)
+    except FileNotFoundError:
+        return AddressBook()
 
 
 def main():
     """
     Основная функция для работы с адресной книгой. Считывает команды пользователя и выполняет соответствующие действия.
     """
-    address_book = AddressBook()
+    address_book = load_data()
     print("Бот-ассистент приветствует вас!")
     while True:
         user_input = input("Введите команду: ")
@@ -20,6 +34,7 @@ def main():
         match command:
             case Command.EXIT:
                 print("Пока!")
+                save_data(address_book)
                 break
             case Command.ADD:
                 print(add_contact(address_book, args))
